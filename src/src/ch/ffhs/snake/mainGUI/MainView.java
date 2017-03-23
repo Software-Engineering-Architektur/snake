@@ -1,5 +1,6 @@
 package ch.ffhs.snake.mainGUI;
 
+import javax.management.remote.JMXConnectionNotification;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -12,12 +13,13 @@ import java.awt.event.ActionListener;
 public class MainView extends JFrame{
 
     private JButton buttonSinglePlayer = new JButton("Single Player");
-
+    private JMenuBar menuBar = new JMenuBar();
 
     public MainView(String title) {
        super(title) ;
 
        setLayout(new GridBagLayout());
+
 
        GridBagConstraints gridBagConstraints = new GridBagConstraints();
 

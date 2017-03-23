@@ -1,10 +1,13 @@
-package ch.ffhs.snake;
+package ch.ffhs.snake.gameBoard;
 
 /**
  * @author felix
  * @version 0.1
  * @date 20.03.2017
  */
+
+import ch.ffhs.snake.gameItems.Food;
+import ch.ffhs.snake.gameItems.Snake;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -30,25 +33,12 @@ public class Board extends JPanel implements ActionListener {
 
     // Used to represent pixel size of food & our snake's joints
     private final static int PIXELSIZE = 25;
-
-// The total amount of pixels the game could possibly have.
-// We don't want less, because the game would end prematurely.
-// We don't more because there would be no way to let the player win.
-
-    private final static int TOTALPIXELS = (BOARDWIDTH * BOARDHEIGHT)
-            / (PIXELSIZE * PIXELSIZE);
-
+    private final static int TOTALPIXELS = (BOARDWIDTH * BOARDHEIGHT) / (PIXELSIZE * PIXELSIZE);
+    private static int speed = 80;
     // Check to see if the game is running
     private boolean inGame = true;
-
     // Timer used to record tick times
     private Timer timer;
-
-    // Used to set game speed, the lower the #, the faster the snake travels
-// which in turn
-// makes the game harder.
-    private static int speed = 45;
-
     // Instances of our snake & food so we can use their methods
     private Snake snake = new Snake();
     private Food food = new Food();
@@ -62,6 +52,14 @@ public class Board extends JPanel implements ActionListener {
         setPreferredSize(new Dimension(BOARDWIDTH, BOARDHEIGHT));
 
         initializeGame();
+    }
+
+    public static int getAllDots() {
+        return TOTALPIXELS;
+    }
+
+    public static int getDotSize() {
+        return PIXELSIZE;
     }
 
     // Used to paint our components to the screen
@@ -208,6 +206,10 @@ public class Board extends JPanel implements ActionListener {
         repaint();
     }
 
+    private boolean proximity(int a, int b, int closeness) {
+        return Math.abs((long) a - b) <= closeness;
+    }
+
     private class Keys extends KeyAdapter {
 
         @Override
@@ -250,18 +252,6 @@ public class Board extends JPanel implements ActionListener {
                 initializeGame();
             }
         }
-    }
-
-    private boolean proximity(int a, int b, int closeness) {
-        return Math.abs((long) a - b) <= closeness;
-    }
-
-    public static int getAllDots() {
-        return TOTALPIXELS;
-    }
-
-    public static int getDotSize() {
-        return PIXELSIZE;
     }
 }
 

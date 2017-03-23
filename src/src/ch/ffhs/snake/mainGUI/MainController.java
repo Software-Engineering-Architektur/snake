@@ -1,6 +1,6 @@
 package ch.ffhs.snake.mainGUI;
 
-import ch.ffhs.snake.GameController;
+import ch.ffhs.snake.gameGUI.GameController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +28,7 @@ public class MainController {
         this.mainView.addActionListenerButtonSinglePlayer(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GameController.main();
+                GameController.run();
             }
         });
     }

@@ -1,4 +1,6 @@
-package ch.ffhs.snake;
+package ch.ffhs.snake.gameItems;
+
+import ch.ffhs.snake.gameBoard.Board;
 
 /**
  * @author felix
